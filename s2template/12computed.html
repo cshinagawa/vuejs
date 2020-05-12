@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <script src="../vue.js"></script>
+
+  <div id="app">
+    <p>{{ counter }}</p>
+    <button @click="counter += 1">+1</button>
+    <!-- computedプロパティで 動的なデータを表現する。 -->
+    <p>{{ lessThanThree}}</p>
+  </div>
+
+</body>
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      counter: 0
+    },
+    
+    // computedプロパティ
+    // 動的なデータを表現する。
+    // ※dataは動的なものは扱えない。初期値だけ。
+    computed: {
+    	lessThanThree: function() {
+    		return this.counter > 3 ? '3より上' : '3以下'
+      }
+    }
+  })
+</script>
+</html>

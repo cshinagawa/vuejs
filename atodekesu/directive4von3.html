@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"> -->
+    <script src="vue.js"></script>
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js">
+    </script>
+    
+    <div id="app">
+      <p>現在{{ number }}回クリックされています</p>
+      <!--<button v-on:click="countUp">-->
+      <button v-on:click="countUp(2)">
+        カウントアップ
+      </button>
+      
+      <!-- イベントオブジェクトを取得するときは、引数に指定しなくてよい。
+      <p v-on:mousemove="changeMousePosition"> -->
+      <!-- 引数を指定したい場合は、引数と「$イベントオブジェクト」を指定する。-->
+      <p v-on:mousemove="changeMousePosition(10, $event)">
+        マウスを乗せてください
+      </p>
+      <p>X:{{x}}、 Y:{{y}}</p>
+    </div>
+</body>
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      number: 0,
+      x: 0,
+      y: 0  
+    },
+    methods: {
+      //countUp: function() {
+      countUp: function(times) {
+        this.number += 1 * times;
+      },
+      // 引数でイベントオブジェクトを取得する。
+      //changeMousePosition: function(event) {
+      changeMousePosition: function(divideNumber, event) {
+        //console.log(event);
+        this.x = event.clientX / divideNumber;
+        this.y = event.clientY / divideNumber;
+      }
+    }
+  })
+</script>
+</html>

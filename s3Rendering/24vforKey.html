@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <script src="../vue.js"></script>
+
+  <div id="app">
+
+      <ul>
+        <!-- v-forディレクティブを使うときは必ずKey属性を指定すること！
+             予期せぬバグを防ぐため。
+             
+             Key属性を指定することで、DOMと配列の要素を対応させる。
+             Key属性を使うときは、templateタグは表示されず属性も指定できないため、divとかにする。 -->
+        <div v-for="fruit in fruits" :key="fruit">
+          <li>{{ fruit }}</li>
+          <input type="text">
+        </div>
+
+      </ul>
+      
+      <button @click="remove">
+        先頭を削除
+      </button>
+    
+  </div>
+
+</body>
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      fruits: ['リンゴ', 'バナナ', 'キウイ']
+    },
+    methods: {
+    	remove: function() {
+      	this.fruits.shift();
+      }
+    }
+  })
+</script>
+</html>

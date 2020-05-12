@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <script src="../vue.js"></script>
+
+  <div id="app">
+
+    <div id="app">
+      <ul>
+        <li v-for="fruit in fruits">{{ fruit }}</li>
+        <!-- ofでもOK。JavaScriptのイテレート構文に近い書き方。
+        <li v-for="fruit of fruits">{{ fruit }}</li> -->
+      </ul>
+    
+      <!-- 配列を表示
+           ※インデックスも取りたい場合は、第２引数まで指定する。-->
+      <ul>
+        <li v-for="(fruit, index) in fruits">({{ index }}){{ fruit }}</li>
+      </ul>
+    
+      <!-- オブジェクトを表示
+           ※順番は保持されないので、その場合は配列にする。-->
+      <ul>
+        <li v-for="value in object">{{ value }}</li>
+      </ul>
+    
+      <!-- オブジェクトのkey,インデックスも表示する。-->
+      <ul>
+        <li v-for="(value, key, index) in object">({{ index }}) {{ key }}-{{ value }}</li>
+      </ul>
+    
+      <!-- templateタグを使って複数の要素にv-forを適応させる。-->
+      <ul>
+        <template v-for="fruit in fruits"><!-- templateタグにv-forを書く。-->
+          <li>{{ fruit }}</li>
+          <hr>
+        </template>
+      </ul>
+    
+      <!-- n in 10。-->
+      <ul>
+        <li v-for="n in 10">{{ n }}</li>
+      </ul>
+      
+    </div>
+
+</body>
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      fruits: ['リンゴ', 'バナナ', 'キウイ'],
+      object: {
+      	lastNm: '太郎',
+        firstNm: '山田',
+        age: 30
+      }
+    }
+  })
+</script>
+</html>

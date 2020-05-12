@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="../vue.js"></script>
+
+    <div id="app">
+      <p v-once>{{message}}</p>
+      <button v-on:click="reverseMessage">
+        hanten
+      </button>
+      <p>{{ number + 3 }}</p>
+      <p>{{ ok ? 'yes' : 'no' }}</p>
+      
+      
+      <p>{{ sayHi() }}</p>
+      <!-- ディレクティブ（v-。Vue.js専用の属性。11行目と同じことになる。） -->
+      <p　v-text="message"></p>
+    </div>
+</body>
+<script>
+new Vue({
+	el: '#app',
+  data: {
+  	message: 'HelloWorld!',
+    number: 3,
+    ok: true
+  },
+  methods: {
+  	reverseMessage: function() {
+    	this.message = this.message.split('').reverse().join('')
+    },
+    sayHi: function() {
+    	//インスタンス内ではthisを付ける
+    	// return this.message;	
+      
+    	this.message = 'Hello VueJS';
+      return 'Hi';
+    }
+  }
+})
+</script>
+</html>

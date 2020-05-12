@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <script src="../vue.js"></script>
+
+  <div id="app">
+    <p>{{ counter }}</p>
+    <button @click="counter += 1">+1</button>
+    <!--<p>{{ lessThanThree}}</p>-->
+  </div>
+
+</body>
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      counter: 0
+    },
+    
+    computed: {
+    	lessThanThree: function() {
+    		return this.counter > 3 ? '3より上' : '3以下'
+      }
+    },
+
+    // あるデータ(counter)が変わったときに特定の処理をする。
+    // ※通常はcomputedプロパティを使うが、画面上にない場合もあるので、
+    //   そういう時はwatcherを使う。
+    // ※また、computedプロパティでは非同期処理は書けないので、
+    //　　その時もwatcherを使う。
+    watch: {
+      counter: function() {
+        var vm = this;  // 非同期処理ではthisは使えないので変数vmを介してアクセスする。
+        // 非同期処理
+        setTimeout(function() {
+          vm.counter = 0;
+        }, 3000);
+      }
+    }
+  })
+</script>
+</html>

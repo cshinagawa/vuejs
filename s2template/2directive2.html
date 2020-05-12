@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <script src="../vue.js"></script>
+
+    <div id="app">
+      <div>
+        {{ html }}
+      </div>
+      <!-- クロスサイトスクリプティングにならないように信頼されたコンテンツのみに利用する -->
+      <div v-html="html"></div>
+    </div>
+</body>
+<script>
+  new Vue({
+	el: '#app',
+  data: {
+  	html: '<h1>h1です</h1>'
+  }
+})
+</script>
+</html>

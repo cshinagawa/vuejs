@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <script src="../vue.js"></script>
+
+  <div id="app">
+    <button @click="ok = !ok">
+      ボタン
+    </button>
+    <!-- v-ifは要素ごと消し去る。 -->
+    <p v-if="ok">If</p>
+    <!-- v-showはスタイルで見えなくする。 -->
+    <p v-show="ok">Show</p>
+    
+    <!-- v-ifは表示非表示を頻繁に切り替える場合は、要素をDOMに追加・削除するのでパフォーマンスが遅い。 -->
+    
+    <!-- v-showは初期描画時が遅い。必ずDOMを追加するので。 -->
+    
+    <!-- なので、とても頻繁に切り替わる場合はv-showを使う。 -->
+    
+  </div>
+
+</body>
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      ok: true
+    }
+  })
+</script>
+</html>

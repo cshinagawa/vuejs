@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <script src="../vue.js"></script>
+
+  <div id="app">
+    <!-- templateタグ。HTML5のタグ。レンダリングされたらタグは表示されない。
+         複数のタグをv-ifでレンダリングする場合に使える。-->
+    <template v-if="ok">
+      <p v-if="ok">Hello!</p>
+      <p v-if="ok">こんにちは!</p>
+      <p v-if="ok">Good Bye</p>
+    </template>
+    <button @click="ok = !ok">
+      ボタン
+    </button>
+  </div>
+
+</body>
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      ok: true
+    }
+  })
+</script>
+</html>

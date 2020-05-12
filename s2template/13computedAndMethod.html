@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <script src="../vue.js"></script>
+
+  <div id="app">
+    <p>{{ counter }}</p>
+    <button @click="counter += 1">+1</button>
+    <p>{{ otherCounter }}</p>
+    <button @click="otherCounter += 1">別の+1</button>
+    
+    <!-- computedプロパティ -->
+    <p>{{ lessThanThree}}</p>
+    
+    <!-- methods -->
+    <p>{{ lessThanThreeMethod() }}</p>
+  </div>
+
+</body>
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      counter: 0,
+      otherCounter: 0
+    },
+    
+    // computedプロパティ
+    // 動的なデータを表現する。
+    // ※dataは動的なものは扱えない。初期値だけ。
+
+    // 参照先counterの値が変わった時のみ実行される。
+    computed: {
+    	lessThanThree: function() {
+      	console.log('Computed');
+    		return this.counter > 3 ? '3より上' : '3以下'
+      }
+    },
+    // templateが変わるたびに関数が実行されてしまう。
+    methods: {
+    	lessThanThreeMethod: function() {
+      	console.log('Method');
+    		return this.counter > 3 ? '3より上' : '3以下'
+      }
+    }
+  })
+</script>
+</html>
